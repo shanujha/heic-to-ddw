@@ -1,0 +1,20 @@
+{
+  "name": "heic-to-ddw",
+  "version": "1.0.0",
+  "description": "GUI converter from macOS dynamic wallpaper HEIC to WinDynamicDesktop DDW themes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^8.0.0",
+    "bplist-parser": "^0.5.0",
+    "express": "^5.3.0",
+    "heic-decode": "^2.1.0",
+    "sharp": "^0.35.5"
+  },
+  "type": "module"
+}

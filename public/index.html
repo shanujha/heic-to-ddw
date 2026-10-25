@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HEIC to DDW</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>HEIC → DDW</h1>
+    <p>Convert macOS dynamic wallpapers into <a href="https://github.com/t1m0thyj/WinDynamicDesktop" target="_blank" rel="noopener">WinDynamicDesktop</a> themes.</p>
+  </header>
+
+  <main>
+    <section id="pick" class="card">
+      <label id="drop" for="file">
+        <input id="file" type="file" accept=".heic,.heif,image/heic,image/heif" multiple hidden>
+        <strong>Drop .heic files here</strong>
+        <span>or click to browse · one file opens the editor, several are converted as a batch</span>
+      </label>
+      <div class="row options">
+        <label>Image credits <input id="pickCredits" type="text" placeholder="e.g. Apple"></label>
+        <label for="quality">JPEG quality <output id="qualityOut">95</output>
+          <input id="quality" type="range" min="70" max="100" value="95"></label>
+      </div>
+    </section>
+
+    <section id="batch" class="card" hidden>
+      <div class="row">
+        <strong id="batchText">Converting…</strong>
+        <div class="row">
+          <button id="batchRestart" class="ghost">Start over</button>
+          <button id="batchDownload" disabled>Download .zip</button>
+        </div>
+      </div>
+      <div class="bar"><div id="batchBar"></div></div>
+      <p class="muted hint">Files are converted one at a time using the schedule stored in each HEIC. Open a file on its own to fine-tune segments.</p>
+      <ul id="batchList" class="batch-list"></ul>
+    </section>
+
+    <section id="progress" class="card" hidden>
+      <div class="row"><span id="progressText">Uploading…</span><button id="cancel" class="ghost">Start over</button></div>
+      <div class="bar"><div id="progressBar"></div></div>
+    </section>
+
+    <section id="editor" hidden>
+      <div class="card form">
+        <label>Theme name <input id="name" type="text" maxlength="60"></label>
+        <label>Image credits <input id="credits" type="text" placeholder="e.g. Apple"></label>
+        <p id="note" class="muted"></p>
+        <div id="summary" class="summary"></div>
+        <div class="row actions">
+          <button id="restart" class="ghost">Start over</button>
+          <button id="build">Download .ddw</button>
+        </div>
+        <p id="buildStatus" class="muted"></p>
+      </div>
+      <p class="muted hint">Images are shown in time-of-day order. Change a segment to move an image; ☀ / ☾ pick the preview image for day and night.</p>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <template id="tile">
+    <figure class="tile">
+      <img loading="lazy" alt="">
+      <figcaption>
+        <div class="row"><b class="num"></b><span class="detail muted"></span></div>
+        <select class="segment">
+          <option value="sunrise">Sunrise</option>
+          <option value="day">Day</option>
+          <option value="sunset">Sunset</option>
+          <option value="night">Night</option>
+          <option value="unused">Unused</option>
+        </select>
+        <div class="row highlights">
+          <label title="Day preview"><input type="radio" name="dayHl"> ☀</label>
+          <label title="Night preview"><input type="radio" name="nightHl"> ☾</label>
+        </div>
+      </figcaption>
+    </figure>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
