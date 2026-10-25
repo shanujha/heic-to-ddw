@@ -9,7 +9,7 @@
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-0078D6)](#-quick-start)
 [![Output](https://img.shields.io/badge/output-WinDynamicDesktop%20.ddw-6d8fff)](https://github.com/t1m0thyj/WinDynamicDesktop)
 [![Runs locally](https://img.shields.io/badge/privacy-100%25%20local-success)](#-privacy)
-[![License: ISC](https://img.shields.io/badge/license-ISC-blue)](package.json)
+[![License: ISC](https://img.shields.io/badge/license-ISC-blue)](LICENSE)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/editor-dark.png">
@@ -36,7 +36,9 @@
 - [Troubleshooting](#-troubleshooting)
 - [Privacy](#-privacy)
 - [Project layout](#-project-layout)
+- [Contributing](#-contributing)
 - [Credits](#-credits)
+- [License](#-license)
 
 ---
 
@@ -80,6 +82,7 @@ It runs as a small local web app: a Node.js server on your PC plus a page in you
 2. **Double-click `start.bat`.**
    - The first run installs dependencies automatically, which takes a minute.
    - Your browser then opens **http://localhost:5178** on its own.
+   - If Node.js isn't installed, the window tells you so and waits for a key press.
 3. Keep the black console window open while you use the converter. Close it when you're done.
 
 ### macOS / Linux (or Windows from a terminal)
@@ -113,7 +116,7 @@ You need a **dynamic** `.heic`, meaning one that contains several frames. A norm
 
 Where to find one:
 
-- **On a Mac:** older macOS versions keep the built-in wallpapers (Mojave, Catalina, Big Sur…) in `/System/Library/Desktop Pictures/`. Newer versions download them on demand, usually into `/Library/Application Support/com.apple.mobileAssetDesktop/`. Copy the `.heic` files to your Windows PC.
+- **On a Mac:** the built-in dynamic wallpapers (Mojave, Catalina, Big Sur…) live in `/System/Library/Desktop Pictures/`. In Finder, press `Cmd + Shift + G` and paste that path. Recent macOS versions keep more of them in hidden subfolders such as `.wallpapers` (press `Cmd + Shift + .` to show hidden files). Some newer wallpapers are only downloaded after you pick them once in **System Settings → Wallpaper**. Copy the `.heic` files to your Windows PC.
 - **Online:** many artists share free dynamic wallpapers as `.heic` files, for example on [dynamicwallpaper.club](https://dynamicwallpaper.club/).
 
 > [!NOTE]
@@ -275,7 +278,8 @@ heic-to-ddw/
 │   ├── worker.js      # Decodes HEIC frames to JPEG in a worker thread
 │   └── metadata.js    # Reads Apple's schedule, maps frames to segments
 ├── public/            # The browser UI (plain HTML/CSS/JS, no build step)
-└── docs/screenshots/  # Images used in this README
+├── docs/screenshots/  # Images used in this README
+└── LICENSE            # ISC license
 ```
 
 Built with [Express](https://expressjs.com/), [heic-decode](https://github.com/catdad-experiments/heic-decode) (libheif), [sharp](https://sharp.pixelplumbing.com/), [bplist-parser](https://github.com/joeferner/node-bplist-parser) and [archiver](https://github.com/archiverjs/node-archiver).
@@ -284,5 +288,13 @@ Built with [Express](https://expressjs.com/), [heic-decode](https://github.com/c
 
 - [WinDynamicDesktop](https://github.com/t1m0thyj/WinDynamicDesktop) by Timothy Johnson, which makes dynamic desktops possible on Windows.
 - Apple, for the dynamic wallpaper format and the beautiful wallpapers.
+
+## 🤝 Contributing
+
+Bug reports and ideas are welcome. Please [open an issue](https://github.com/shanujha/heic-to-ddw/issues). If a wallpaper converts badly, mention where it came from and what the editor's note said (which `apple_desktop:` schedule was read). Pull requests are welcome too. The UI is plain HTML/CSS/JS with no build step, so `npm start` is all you need to try a change.
+
+## 📄 License
+
+[ISC](LICENSE). This covers the converter's code only. Wallpapers you convert remain the property of their creators.
 
 <sub>The thumbnails in the screenshots above are illustrative placeholders, not real wallpaper content.</sub>
